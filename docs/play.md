@@ -2,13 +2,20 @@
 
 Click the game, then use the keys:
 
-- Left player: `W` to go up, `S` to go down
-- Right player: up and down arrow keys
+- Top (red) player: `A` to go left, `S` to go right
+- Bottom (blue) player: `H` to go left, `J` to go right
 
-Each key press changes the speed of a player.
+Each player can have a teammate:
+
+- Top (red) player: `'` to go left, `\` to go right
+- Bottom (blue) player: left and right arrow keys
+
+Holding a key changes the speed of a player.
+When teammates press the same direction together,
+the player speeds up faster.
 
 <!-- markdownlint-disable MD033 --><!-- Need HTML here -->
 
-<iframe src="game/pong_3d.html" scrolling="no" style="border: 0; width: 100%; aspect-ratio: 2 / 1"></iframe>
+<iframe src="game/prong.html" scrolling="no" style="border: 0; width: 100%; aspect-ratio: 1 / 1"></iframe>
 
 <!-- markdownlint-enable MD033 -->

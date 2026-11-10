@@ -4,24 +4,30 @@ import time
 
 from playwright.sync_api import sync_playwright
 
-URL = "http://localhost:8000/pong_3d.html"
+URL = "http://localhost:8000/prong.html"
+
+
+def hold(page, key, seconds=0.5):
+    """Hold a key down, as the game only moves a player while a key is held."""
+    page.keyboard.down(key)
+    time.sleep(seconds)
+    page.keyboard.up(key)
 
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(args=["--use-gl=swiftshader", "--ignore-gpu-blocklist"])
+    browser = p.chromium.launch()
     # About the size of the iframe on the website
-    page = browser.new_page(viewport={"width": 600, "height": 300})
+    page = browser.new_page(viewport={"width": 600, "height": 600})
     errors = []
     page.on("pageerror", lambda e: errors.append(str(e)))
     page.goto(URL)
     time.sleep(3)
-    page.mouse.click(300, 150)
+    page.mouse.click(300, 300)
     before = page.screenshot()
     time.sleep(0.5)
     after_wait = page.screenshot()
-    for _ in range(3):
-        page.keyboard.press("w")
-        page.keyboard.press("ArrowDown")
+    hold(page, "s")
+    hold(page, "ArrowRight")
     time.sleep(1)
     after_keys = page.screenshot()
     browser.close()

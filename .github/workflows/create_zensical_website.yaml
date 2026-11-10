@@ -10,7 +10,8 @@ on:
       - .github/workflows/create_zensical_website.yaml
       - 'docs/**'
       - zensical.toml
-      - pong_3d.pde
+      - prong.pde
+      - scripts/add_game_to_website.sh
 
 permissions:
   contents: read
@@ -30,7 +31,7 @@ jobs:
         with:
           python-version: 3.x
       - name: Add the game to the website
-        run: cp prong.pde docs/game/
+        run: ./scripts/add_game_to_website.sh
       - run: pip install zensical
       - run: zensical build --clean --strict
       - uses: actions/upload-pages-artifact@v4
